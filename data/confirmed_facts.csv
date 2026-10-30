@@ -1,0 +1,23 @@
+metric,value,unit,source
+Concession,2019-2069 (50 years),years,Paper section on PPJT/addendum
+WACC,13.55,%,Paper Tables 3 and 5 (30% equity 13.95%; 70% debt 13.38%)
+Total investment cost (base),8288497,IDR million,Paper Table 9 (incl. interest during construction 1105569)
+Total investment cost (PPJT 2017),5329898,IDR million,Paper Table 9
+Class I base tariff,1162,IDR/km,Paper (PPJT original: 1000)
+Initial ADT Section 1 (2021),8339,vehicles/day,Paper Table 12
+Initial ADT Section 2 (2023),6442,vehicles/day,Paper Table 12
+Initial ADT Section 3 (2023),5688,vehicles/day,Paper Table 12
+O&M ratio,30,% of revenue,Paper
+Base NPV,399084,IDR million,Paper Table 15
+Base IRR,13.96,%,Paper Table 15
+Discounted payback,45,years,Paper Table 15
+Profitability index,1.05,ratio,Paper Table 15
+PPJT NPV,531699,IDR million,Paper Table 16
+Monte Carlo mean NPV,-1203368,IDR million,Paper Table 20
+Monte Carlo median NPV,-1244962,IDR million,Paper Table 20
+Monte Carlo std dev NPV,687674,IDR million,Paper Table 20
+Monte Carlo minimum NPV,-3257947,IDR million,Paper Table 20
+Monte Carlo maximum NPV,1866187,IDR million,Paper Table 20
+Trials with NPV >= 0,468 of 10000 (4.68%),,Paper Table 20 text
+Tariff breakeven (NPV=0),1068,IDR/km,Paper Table 18
+Capex breakeven,109.4,% of base construction capex,Paper Table 18

@@ -1,0 +1,11 @@
+variable,distribution,min,mode,max
+Toll tariff (IDR/km),Triangular,965,1162,1618
+Construction capex (x base),Triangular,0.90,1.00,1.10
+O&M ratio,Triangular,0.20,0.30,0.40
+Initial ADT S1,Triangular,4170,8339,10424
+Initial ADT S2,Triangular,3221,6442,8053
+Initial ADT S3,Triangular,2844,5688,7110
+ADT growth S1-S3 (x base; each),Triangular,0.70,0.85,1.00
+Operational year S1,Discrete uniform,2021,,2022
+Operational year S2,Discrete uniform,2023,,2027
+Operational year S3,Discrete uniform,2023,,2030

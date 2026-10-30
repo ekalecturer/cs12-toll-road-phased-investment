@@ -1,0 +1,13 @@
+rank,variable,range_idr_million,cumulative_explained_variation_pct
+1,Toll tariff,1328429,33.93
+2,Initial ADT S1,960459,51.66
+3,Operational year S2,751044,62.51
+4,O&M ratio,724799,72.61
+5,Initial ADT S2,657682,80.93
+6,Capex construction,621693,88.36
+7,ADT growth S1,487888,92.93
+8,Initial ADT S3,421944,96.36
+9,ADT growth S2,315724,98.27
+10,ADT growth S3,217484,99.18
+11,Operational year S1,156611,99.65
+12,Operational year S3,134359,100.00

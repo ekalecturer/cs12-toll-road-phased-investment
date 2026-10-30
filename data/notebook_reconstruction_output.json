@@ -1,0 +1,153 @@
+{
+ "base_npv_reconstruction": 400017.8082416868,
+ "monte_carlo_10000": {
+  "mean": -952297.1656274252,
+  "median": -997095.987666324,
+  "sd": 686993.6693940815,
+  "min": -3048335.6614033766,
+  "max": 2098049.857776597,
+  "p_npv_pos": 0.0895
+ },
+ "validation": [
+  {
+   "Case": "Toll tariff -15%",
+   "Reconstruction": -361835.5,
+   "Paper (Table 17)": -339228,
+   "Gap %": 6.7
+  },
+  {
+   "Case": "Toll tariff +15%",
+   "Reconstruction": 1161871.1,
+   "Paper (Table 17)": 1132837,
+   "Gap %": 2.6
+  },
+  {
+   "Case": "Construction capex +15%",
+   "Reconstruction": -234229.1,
+   "Paper (Table 17)": -240700,
+   "Gap %": -2.7
+  },
+  {
+   "Case": "Construction capex -15%",
+   "Reconstruction": 1034264.7,
+   "Paper (Table 17)": 1034675,
+   "Gap %": -0.0
+  }
+ ],
+ "all_inputs_at_mode_npv": -317630.74620390683,
+ "growth_at_plan": {
+  "mean": -351184.2400201277,
+  "p_npv_pos": 0.3043
+ },
+ "tornado": [
+  {
+   "Input": "Toll tariff",
+   "Share of explained variance %": 36.91,
+   "Cumulative %": 36.91,
+   "Paper %": 33.93
+  },
+  {
+   "Input": "Initial ADT S1",
+   "Share of explained variance %": 20.84,
+   "Cumulative %": 57.75,
+   "Paper %": 17.73
+  },
+  {
+   "Input": "O&M ratio",
+   "Share of explained variance %": 9.71,
+   "Cumulative %": 67.46,
+   "Paper %": 10.1
+  },
+  {
+   "Input": "Operational year S3",
+   "Share of explained variance %": 7.82,
+   "Cumulative %": 75.28,
+   "Paper %": NaN
+  },
+  {
+   "Input": "Construction capex",
+   "Share of explained variance %": 6.49,
+   "Cumulative %": 81.77,
+   "Paper %": 7.43
+  },
+  {
+   "Input": "Initial ADT S3",
+   "Share of explained variance %": 5.57,
+   "Cumulative %": 87.34,
+   "Paper %": NaN
+  },
+  {
+   "Input": "Initial ADT S2",
+   "Share of explained variance %": 5.42,
+   "Cumulative %": 92.76,
+   "Paper %": 8.32
+  },
+  {
+   "Input": "Operational year S2",
+   "Share of explained variance %": 2.34,
+   "Cumulative %": 95.1,
+   "Paper %": 10.85
+  },
+  {
+   "Input": "ADT growth S1",
+   "Share of explained variance %": 2.2,
+   "Cumulative %": 97.3,
+   "Paper %": NaN
+  },
+  {
+   "Input": "Operational year S1",
+   "Share of explained variance %": 1.04,
+   "Cumulative %": 98.34,
+   "Paper %": NaN
+  },
+  {
+   "Input": "ADT growth S3",
+   "Share of explained variance %": 0.83,
+   "Cumulative %": 99.17,
+   "Paper %": NaN
+  },
+  {
+   "Input": "ADT growth S2",
+   "Share of explained variance %": 0.83,
+   "Cumulative %": 100.0,
+   "Paper %": NaN
+  }
+ ],
+ "levers": [
+  {
+   "Scenario": "Paper input ranges (as is)",
+   "P(NPV >= 0)": 9.0,
+   "Mean NPV (IDR m)": -934088.0
+  },
+  {
+   "Scenario": "Section 2 opens on time (2023)",
+   "P(NPV >= 0)": 14.4,
+   "Mean NPV (IDR m)": -765624.0
+  },
+  {
+   "Scenario": "Tariff distribution +20%",
+   "P(NPV >= 0)": 38.1,
+   "Mean NPV (IDR m)": -186204.0
+  },
+  {
+   "Scenario": "Tariff +20% and Section 2 on time",
+   "P(NPV >= 0)": 48.4,
+   "Mean NPV (IDR m)": 15953.0
+  },
+  {
+   "Scenario": "Tariff distribution +30%",
+   "P(NPV >= 0)": 56.3,
+   "Mean NPV (IDR m)": 187738.0
+  },
+  {
+   "Scenario": "Government funds 25% of construction-linked capex",
+   "P(NPV >= 0)": 55.0,
+   "Mean NPV (IDR m)": 121616.0
+  }
+ ],
+ "calibration": {
+  "PHI": 0.655,
+  "K": 1.108
+ },
+ "note": "Illustrative reconstruction; not the authors' workbook."
+}

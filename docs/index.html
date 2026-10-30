@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Feasibility Stress Test — Serang–Panimbang Toll Road, Phased Operation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --blue:#2b6cb0; --dark:#1a202c; --gray:#4a5568; --bg:#f7fafc; --green:#2f855a; --gold:#d69e2e; --purple:#805ad5; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin:0; color:var(--dark); background:#fff; line-height:1.6; }
+  header { background:var(--dark); color:#fff; padding:56px 20px; }
+  header .kicker { color:#90cdf4; font-weight:600; letter-spacing:.04em; text-transform:uppercase; font-size:13px; }
+  header h1 { font-size:32px; margin:10px 0 14px; max-width:760px; }
+  header p { max-width:680px; color:#cbd5e0; font-size:17px; }
+  .wrap { max-width:860px; margin:0 auto; padding:40px 20px; }
+  .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px; margin:28px 0; }
+  .stat { background:var(--bg); border-radius:10px; padding:18px; border:1px solid #e2e8f0; }
+  .stat .num { font-size:24px; font-weight:700; color:var(--blue); }
+  .stat .label { font-size:13px; color:var(--gray); margin-top:4px; }
+  h2 { font-size:21px; margin-top:40px; border-bottom:2px solid #e2e8f0; padding-bottom:8px; }
+  .btnrow { display:flex; gap:12px; flex-wrap:wrap; margin:24px 0; }
+  .btn { display:inline-block; background:var(--blue); color:#fff; text-decoration:none; padding:12px 20px; border-radius:8px; font-weight:600; border:none; cursor:pointer; font-size:15px; font-family:inherit; }
+  .btn.secondary { background:#fff; color:var(--blue); border:2px solid var(--blue); }
+  .callout { background:#fffbea; border-left:4px solid #d69e2e; padding:16px 20px; border-radius:6px; margin:20px 0; font-size:15px; }
+  .callout.good { background:#f0fff4; border-left-color:#38a169; }
+  .callout.bad { background:#fff5f5; border-left-color:#c53030; }
+  footer { text-align:center; color:var(--gray); font-size:13px; padding:40px 20px; }
+  a { color:var(--blue); }
+  table { border-collapse:collapse; width:100%; margin:16px 0; font-size:14px; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid #e2e8f0; }
+  th { color:var(--gray); font-weight:600; }
+  .sim-panel { background:var(--bg); border:1px solid #e2e8f0; border-radius:12px; padding:24px; margin:24px 0; }
+  .sliders { display:grid; grid-template-columns:1fr 1fr; gap:18px 28px; }
+  @media (max-width:640px) { .sliders { grid-template-columns:1fr; } }
+  .slider-row label { display:flex; justify-content:space-between; font-size:14px; font-weight:600; margin-bottom:4px; }
+  .slider-row .val { color:var(--blue); font-weight:700; }
+  .slider-row input[type=range], .slider-row select { width:100%; accent-color:var(--blue); font-family:inherit; font-size:14px; }
+  .sim-results { margin-top:28px; }
+  .sim-results.hidden { display:none; }
+  canvas { width:100%; height:260px; background:#fff; border:1px solid #e2e8f0; border-radius:8px; }
+  .disclosure { font-size:13px; color:var(--gray); margin-top:14px; }
+  .legend { display:flex; gap:18px; font-size:13px; margin-top:8px; flex-wrap:wrap; }
+  .legend span { display:inline-flex; align-items:center; gap:6px; }
+  .swatch { width:12px; height:3px; display:inline-block; }
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">The Feasibility Stress Test — Case Study #12 · Capital Budgeting</div>
+  <h1>IRR 13.96% Against a 13.55% Hurdle: Only 4.68% of 10,000 Trials Make Money</h1>
+  <p>A Monte Carlo reconstruction of a published reassessment of Indonesia's Serang–Panimbang toll road under phased operation: base NPV of IDR 399 billion on IDR 8.29 trillion of investment cost.</p>
+</header>
+<div class="wrap">
+
+<div class="callout good"><strong>Note:</strong> the paper's full text (open access, CC BY-SA 4.0) was read through an automated extraction pass of the PDF, not a manual page-by-page review. This is disclosed here and in the README.</div>
+
+<h2>The confirmed findings</h2>
+<div class="stat-grid">
+  <div class="stat"><div class="num">IDR 399 bn</div><div class="label">Base-case NPV at 13.55% WACC (PI 1.05, discounted payback 45 years)</div></div>
+  <div class="stat"><div class="num">13.96%</div><div class="label">Base IRR: 41 basis points above WACC (own arithmetic)</div></div>
+  <div class="stat"><div class="num">-IDR 1.20 tn</div><div class="label">Paper's Monte Carlo mean NPV (10,000 trials)</div></div>
+  <div class="stat"><div class="num">4.68%</div><div class="label">Trials with NPV &ge; 0 (468 of 10,000)</div></div>
+</div>
+
+<p>Source: Utomo, W. &amp; Utomo, C. (2026). <em>Investment Decision on the Serang–Panimbang Toll Road Project, Taking into Account the Phased Operation of the Toll Road.</em> Journal Research of Social Science, Economics, and Management, 5(12), 13061–13073. <a href="https://doi.org/10.59141/jrssem.v5i12.1605">DOI</a></p>
+
+<h2>Deterministic turning points (NPV = 0)</h2>
+<table>
+<tr><th>Driver</th><th>Threshold in the paper</th></tr>
+<tr><td>Minimum toll tariff (Class I)</td><td>IDR 1,068/km (base 1,162)</td></tr>
+<tr><td>Maximum construction capex</td><td>109.4% of base case</td></tr>
+<tr><td>Minimum ADT growth, Section 1</td><td>84% of base case</td></tr>
+<tr><td>Latest opening year, Section 2</td><td>2024</td></tr>
+</table>
+
+<div class="callout bad"><strong>Honest caveat:</strong> the paper does not publish its annual cash-flow workbook. This page runs an <strong>illustrative reconstruction</strong>: annual toll revenue from the paper's published traffic, tariff, growth and capex inputs, with two calibration scalars fitted to the paper's base NPV and capex sensitivity. The S1/S2 section-length split, the 20-year growth window and the absence of tax are <strong>my assumptions</strong>. The reconstruction gives a loss-making majority of trials, like the paper, but its P(NPV &ge; 0) is about 9%, not 4.68%. The paper itself has internal inconsistencies (table cross-references, a Section 2 range that differs between tables). The paper reports no outcome after the decision.</div>
+
+<h2>Run your own simulation</h2>
+<p>Set the value drivers, then run 3,000 trials. Continuous inputs use the paper's triangular shape, sampled by inverse transform. Optional: switch initial traffic to a normal shape (Box-Muller) and add correlation between the three sections' traffic through a Cholesky-based Gaussian copula. The copula is <strong>my extension</strong>: the paper simulates all inputs as independent. The lever sliders (tariff uplift, government capex support) go beyond the paper's tests.</p>
+
+<div class="sim-panel">
+  <div class="sliders">
+    <div class="slider-row"><label>Toll tariff, most likely <span class="val" id="v_tar">1,162</span></label><input type="range" id="tar" min="900" max="1600" step="10" value="1162"></div>
+    <div class="slider-row"><label>Tariff uplift (lever) <span class="val" id="v_up">+0%</span></label><input type="range" id="up" min="0" max="40" step="5" value="0"></div>
+    <div class="slider-row"><label>Traffic growth, most likely (x plan) <span class="val" id="v_gm">85%</span></label><input type="range" id="gm" min="70" max="100" step="5" value="85"></div>
+    <div class="slider-row"><label>Initial traffic scale <span class="val" id="v_ad">100%</span></label><input type="range" id="ad" min="70" max="120" step="5" value="100"></div>
+    <div class="slider-row"><label>Capex overrun range (±) <span class="val" id="v_cx">10%</span></label><input type="range" id="cx" min="0" max="20" step="1" value="10"></div>
+    <div class="slider-row"><label>Government capex support (lever) <span class="val" id="v_sp">0%</span></label><input type="range" id="sp" min="0" max="40" step="5" value="0"></div>
+    <div class="slider-row"><label>Section 2 opens no later than <span class="val" id="v_s2">2027</span></label><input type="range" id="s2" min="2023" max="2027" step="1" value="2027"></div>
+    <div class="slider-row"><label>Traffic correlation across sections <span class="val" id="v_rho">0.0</span></label><input type="range" id="rho" min="0" max="0.9" step="0.1" value="0"></div>
+    <div class="slider-row"><label>Initial traffic distribution</label><select id="shape"><option value="t">Triangular (paper)</option><option value="n">Normal, same mean and spread (Box-Muller)</option></select></div>
+  </div>
+  <div class="btnrow"><button class="btn" id="runBtn">Run simulation (3,000 trials)</button></div>
+
+  <div class="sim-results hidden" id="results">
+    <div class="stat-grid">
+      <div class="stat"><div class="num" id="r_mean">—</div><div class="label">Mean NPV (IDR trillion)</div></div>
+      <div class="stat"><div class="num" id="r_p5">—</div><div class="label">5th percentile NPV (IDR trillion)</div></div>
+      <div class="stat"><div class="num" id="r_ppos">—</div><div class="label">P(NPV &ge; 0)</div></div>
+      <div class="stat"><div class="num" id="r_sd">—</div><div class="label">Standard deviation (IDR trillion)</div></div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><div class="num" id="r_base">—</div><div class="label">Deterministic NPV at your inputs (all at most likely, IDR trillion)</div></div>
+    </div>
+    <canvas id="hist" width="800" height="260"></canvas>
+    <div class="legend">
+      <span><span class="swatch" style="background:#c53030"></span>break-even</span>
+      <span><span class="swatch" style="background:#d69e2e"></span>paper's base NPV (+0.40 tn)</span>
+      <span><span class="swatch" style="background:#2f855a"></span>simulated mean</span>
+    </div>
+    <div class="disclosure">Browser-side port of the notebook reconstruction. At default settings it should give P(NPV &ge; 0) near 9% and mean NPV near -IDR 0.95 tn, versus the paper's 4.68% and -1.20 tn. Not the authors' workbook.</div>
+  </div>
+</div>
+
+<h2>Explore</h2>
+<div class="btnrow">
+  <a class="btn secondary" href="notebook.html">View the full Python notebook</a>
+  <a class="btn secondary" href="https://github.com/ekalecturer/cs12-toll-road-phased-investment">View source on GitHub</a>
+</div>
+
+<h2>The lesson</h2>
+<p>A project that clears its hurdle by 41 basis points has no margin for a forecast that is merely realistic. In this reconstruction, tariff and first-section traffic explain about 58% of the variance in NPV. Part of the paper's gap between a positive base case and a negative simulated mean comes from its own input shapes: the growth distribution has a most likely value of 85% of plan, not 100%. The paper reports no post-decision outcome, so what follows is a negotiating checklist, not a result.</p>
+
+</div>
+<footer>Part of <strong>The Feasibility Stress Test</strong> — real Monte Carlo and financial-engineering case studies for capex decisions.</footer>
+
+<script>
+function randNormalStd(){ let u1=Math.random()||1e-9,u2=Math.random(); return Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2); } // Box-Muller
+function triInv(u,a,m,b){ const fc=(m-a)/(b-a); if(b===a) return m; return u<fc ? a+Math.sqrt(u*(b-a)*(m-a)) : b-Math.sqrt((1-u)*(b-m)*(b-a)); } // inverse-transform
+function erf(x){ const s=Math.sign(x); x=Math.abs(x); const t=1/(1+0.3275911*x); const y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-x*x); return s*y; }
+const Phi=z=>0.5*(1+erf(z/Math.SQRT2));
+const mean=a=>a.reduce((s,x)=>s+x,0)/a.length;
+
+// ---- Reconstruction constants (mirror notebook) ----
+const WACC=0.1355, Y0=2021, END=2069, INF=0.0467, PHI=0.655, K=1.108;
+const LEN=[26.4,24.277,33.0], ADT0=[8339,6442,5688], OPEN=[2021,2023,2023];
+const GROW=[.12,.10,.09,.08];
+const MULT=(6755+1.5*1084+1.5*250+2*167+2*83)/8339;
+const CAPEX_LINKED=5637938*(1+0.10+0.045), CAPEX_OTHER=7143518-CAPEX_LINKED;
+const NY=END-Y0+1, DISC=[]; for(let i=0;i<NY;i++) DISC.push(Math.pow(1+WACC,-(i+1)));
+const TARIFF_IDX=[]; for(let i=0;i<NY;i++) TARIFF_IDX.push(Math.pow(1+INF,2*Math.floor(i/2)));
+
+function npv(tariff,capex,opex,adt,gscale,opens,support){
+  let net=0;
+  for(let s=0;s<3;s++){
+    let a=adt[s];
+    for(let i=0;i<NY;i++){
+      const y=Y0+i; if(y<opens[s]) continue;
+      const k=y-opens[s];
+      if(k>0 && k<=20) a*=1+((k-1<GROW.length)?GROW[k-1]:0.08)*gscale[s];
+      const rev=a*365*LEN[s]*MULT*tariff*TARIFF_IDX[i]/1e6;
+      net+=rev*(1-opex)*DISC[i];
+    }
+  }
+  return K*net-PHI*(CAPEX_LINKED*capex*(1-support)+CAPEX_OTHER);
+}
+
+const labels={tar:v=>Number(v).toLocaleString("en-US"),up:v=>"+"+v+"%",gm:v=>v+"%",ad:v=>v+"%",cx:v=>v+"%",sp:v=>v+"%",s2:v=>v,rho:v=>Number(v).toFixed(1)};
+Object.keys(labels).forEach(id=>{ const el=document.getElementById(id), out=document.getElementById("v_"+id); el.addEventListener("input",()=>out.textContent=labels[id](el.value)); });
+
+function drawHistogram(canvas, values, markers){
+  const ctx=canvas.getContext("2d"), W=canvas.width, H=canvas.height; ctx.clearRect(0,0,W,H);
+  let min=Infinity,max=-Infinity; values.forEach(v=>{if(v<min)min=v;if(v>max)max=v;}); markers.forEach(m=>{if(m.x<min)min=m.x;if(m.x>max)max=m.x;});
+  const bins=40, counts=new Array(bins).fill(0), w=(max-min)/bins||1;
+  values.forEach(v=>{let i=Math.floor((v-min)/w); if(i>=bins)i=bins-1; if(i<0)i=0; counts[i]++;});
+  const mc=Math.max(...counts), pad=10, pw=W-2*pad, ph=H-2*pad, bw=pw/bins;
+  ctx.fillStyle="#805ad5"; counts.forEach((c,i)=>{const h=c/mc*ph; ctx.fillRect(pad+i*bw,H-pad-h,bw-1,h);});
+  markers.forEach(m=>{ const x=pad+(m.x-min)/(max-min)*pw; ctx.strokeStyle=m.color; ctx.lineWidth=2; ctx.setLineDash([5,4]); ctx.beginPath(); ctx.moveTo(x,pad); ctx.lineTo(x,H-pad); ctx.stroke(); ctx.setLineDash([]); });
+}
+const tn=x=>(x/1e6).toFixed(2);
+
+function simulate(p, N){
+  const v=[], rho=p.rho;
+  // Cholesky of equicorrelation matrix (3x3) for the Gaussian copula
+  const L=[[1,0,0],[rho,Math.sqrt(1-rho*rho),0],[rho,rho*(1-rho)/Math.sqrt(1-rho*rho),0]];
+  L[2][2]=Math.sqrt(Math.max(1e-12,1-L[2][0]*L[2][0]-L[2][1]*L[2][1]));
+  const ADTB=[[4170,8339,10424],[3221,6442,8053],[2844,5688,7110]];
+  for(let i=0;i<N;i++){
+    const tariff=triInv(Math.random(),p.tar*0.83,p.tar,p.tar*1.393)*(1+p.up);
+    const capex=1+(triInv(Math.random(),-p.cx,0,p.cx));
+    const opex=triInv(Math.random(),0.2,0.3,0.4);
+    const e=[randNormalStd(),randNormalStd(),randNormalStd()];
+    const z=[L[0][0]*e[0], L[1][0]*e[0]+L[1][1]*e[1], L[2][0]*e[0]+L[2][1]*e[1]+L[2][2]*e[2]];
+    const adt=[0,1,2].map(s=>{
+      const [a,m,b]=ADTB[s]; let x;
+      if(p.shape==="t") x=triInv(Phi(z[s]),a,m,b);
+      else { const mu=(a+m+b)/3, sd=Math.sqrt((a*a+m*m+b*b-a*m-a*b-m*b)/18); x=mu+sd*z[s]; }
+      return x*p.ad;
+    });
+    const g=[0,1,2].map(()=>triInv(Math.random(),0.70,p.gm,1.0));
+    const opens=[2021+Math.floor(Math.random()*2), 2023+Math.floor(Math.random()*(p.s2-2023+1)), 2023+Math.floor(Math.random()*8)];
+    v.push(npv(tariff,capex,opex,adt,g,opens,p.sp));
+  }
+  return v;
+}
+
+document.getElementById("runBtn").addEventListener("click",()=>{
+  const g=id=>parseFloat(document.getElementById(id).value);
+  const p={tar:g("tar"),up:g("up")/100,gm:g("gm")/100,ad:g("ad")/100,cx:g("cx")/100,sp:g("sp")/100,s2:g("s2"),rho:g("rho"),shape:document.getElementById("shape").value};
+  const N=3000, v=simulate(p,N);
+  const m=mean(v), sd=Math.sqrt(v.reduce((s,x)=>s+(x-m)*(x-m),0)/(N-1)), sorted=[...v].sort((a,b)=>a-b);
+  const det=npv(p.tar*(1+p.up),1,0.3,ADT0.map(x=>x*p.ad),[p.gm,p.gm,p.gm],OPEN,p.sp);
+  document.getElementById("r_mean").textContent=tn(m);
+  document.getElementById("r_p5").textContent=tn(sorted[Math.floor(0.05*N)]);
+  document.getElementById("r_ppos").textContent=(v.filter(x=>x>=0).length/N*100).toFixed(1)+"%";
+  document.getElementById("r_sd").textContent=tn(sd);
+  document.getElementById("r_base").textContent=tn(det);
+  document.getElementById("results").classList.remove("hidden");
+  drawHistogram(document.getElementById("hist"), v, [{x:0,color:"#c53030"},{x:399084,color:"#d69e2e"},{x:m,color:"#2f855a"}]);
+});
+if(typeof module!=="undefined") module.exports={npv,simulate,ADT0,OPEN};
+</script>
+</body>
+</html>

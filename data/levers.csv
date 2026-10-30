@@ -1,0 +1,7 @@
+scenario,p_npv_pos_pct,mean_npv_idr_million
+Paper input ranges (as is),9.0,-934088.0
+Section 2 opens on time (2023),14.4,-765624.0
+Tariff distribution +20%,38.1,-186204.0
+Tariff +20% and Section 2 on time,48.4,15953.0
+Tariff distribution +30%,56.3,187738.0
+Government funds 25% of construction-linked capex,55.0,121616.0
